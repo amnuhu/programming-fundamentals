@@ -4,20 +4,36 @@
 using namespace std;
 
 
-int countChar(int size) {
-    int count = 0;
-    for (int i = 0 ; i < size; ++i)
-      count += 1;
-    return count;
+int getString(char buffer[]){
+    int bufSize = sizeof(buffer);
+    
+    string newString;
+    string *strPtrc = &newString;
+    for (int i = 0; i < 256; ++i) {
+      if (buffer[i] == '-'|| buffer[i] == '\0') {
+        int strSize = strPtrc->size();
+        if (strSize == 0) {
+          break;
+        }
+        cout <<  "["<< strSize << "]   " << *strPtrc <<endl;
+        *strPtrc = "";
+        continue;
+      }
+      *strPtrc += buffer[i];
+      cout << *strPtrc << endl;
+    }
 };
 
+
+
 int main() {
-    char buffer[256];
+    const int SIZE = 256;
+    char buffer[SIZE];
 
-    // read - delimited word
-    cin >> buffer;
+    cout << "Enter characters: " << endl;
+    cin >> buffer;   
 
-    for (char c : buffer) {
-      cout << c << endl;
-    } 
+    cout << "\nThe string read with cin was:" << endl<< buffer << endl << endl;
+
+    getString(buffer);
 }
