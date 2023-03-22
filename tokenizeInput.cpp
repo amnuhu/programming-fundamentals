@@ -34,6 +34,5 @@ int main() {
     cin >> buffer;   
 
     cout << "\nThe string read with cin was:" << endl<< buffer << endl << endl;
-
     getString(buffer);
 }
